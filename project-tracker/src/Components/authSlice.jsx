@@ -13,6 +13,8 @@ const authSlice =createSlice({
         isAdmin:false,              //indicates if the user is an admin
         isAuthenticated: false,     //check if the user is authenticated
         error: null,                //authentication error messages
+        loading: false,             //loading state   
+        isVerified: false           //track if the user has verified email
     },
 
     reducers:{
@@ -50,6 +52,18 @@ const authSlice =createSlice({
             state.isAdmin = false;
             state.isAuthenticated = false;
             state.error = null;
+        },
+        // Signup: Update the state with the error message passed in the action
+        setError: (state, action) => {
+            state.loading = action.payload;               
+        },
+        // SignUp: Set the loading state to true or false based on the action payload
+        setLoading: (state, action) => {
+            state.loading =action.payload;
+        },
+        // Signup: Update the verification status of the user (true/false)
+        setVerificationStatus: (state,action) => {
+            state.isVerified = action.payload;
         }
 
        
@@ -58,7 +72,7 @@ const authSlice =createSlice({
 });
 
 //exporting actions
-export const{loginSuccess,loginFailure,logout,setUser,clearUser} = authSlice.actions;
+export const{loginSuccess,loginFailure,logout,setUser,clearUser,setError, setLoading, setVerificationStatus} = authSlice.actions;
 
 // export reducer to be used in the store
 export default authSlice.reducer;

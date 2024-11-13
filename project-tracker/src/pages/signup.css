@@ -1,0 +1,112 @@
+/* General styling for the signup page */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+  }
+  
+  .signup-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    max-width: 400px;
+  }
+  
+  .signup-form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  .signup-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .signup-form input {
+    width: 380px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .signup-form input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .signup-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .signup-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .signup-form .error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .signup-form .success {
+    color: #28a745;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .signup-form .role-selector {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .signup-form .role-selector label {
+    font-weight: normal;
+  }
+  
+  .signup-form .role-selector input[type="radio"] {
+    margin-left: 5px;
+  }
+  
+  .signup-form .terms {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .signup-form .terms input {
+    margin-right: 5px;
+  }
+  
+  .signup-form .footer {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .signup-form .footer a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .signup-form .footer a:hover {
+    text-decoration: underline;
+  }
+  

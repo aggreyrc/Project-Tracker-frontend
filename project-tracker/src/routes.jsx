@@ -27,13 +27,27 @@ const routes = [
       {
         path: "/admin-dashboard", 
         element: <AdminDashboard />,
+        // pass the user to  admin dashboard
+        loader: ({request}) => {
+          return {user: request.context.user}
+        }
+
       },
       {
         path: "/student-dashboard", 
         element: <StudentDashboard />,
+        loader: ({request}) => {
+          return {user: request.context.user}
+        }
       },
     ],
   },
 ];
 
 export default routes;
+
+
+// notes:
+// loader:
+//  loader is a function that allows you to pre-fetch data before rendering the route's component.
+//  It can be used to load data, check conditions (e.g., authentication), or fetch API responses before rendering the component that corresponds to the route.
