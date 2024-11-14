@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import { useEffect } from "react";
 import NavBar from "./Components/NavBar"
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { setUser } from "./Components/authSlice";
 function App() {
 
   const dispatch =useDispatch();
+  const navigate =useNavigate();
   const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
@@ -20,7 +21,8 @@ function App() {
       })
       .then((userData) => dispatch(setUser(userData)))
       .catch((error) => console.error("Session check failed:", error));
-  }, [dispatch]);
+      navigate('/login')
+  }, [dispatch,navigate]);
 
  
   return (

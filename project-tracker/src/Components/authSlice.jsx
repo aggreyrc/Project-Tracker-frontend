@@ -55,7 +55,7 @@ const authSlice =createSlice({
         },
         // Signup: Update the state with the error message passed in the action
         setError: (state, action) => {
-            state.loading = action.payload;               
+            state.error = action.payload;               
         },
         // SignUp: Set the loading state to true or false based on the action payload
         setLoading: (state, action) => {

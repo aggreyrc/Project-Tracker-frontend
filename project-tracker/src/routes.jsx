@@ -5,6 +5,7 @@ import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home"
 import AdminDashboard from "./pages/adminDashboard.jsx";
 import StudentDashboard from "./pages/studentDashboard.jsx";
+import VerifyPage from "./pages/VerifyPage.jsx";
 
 const routes = [
   {
@@ -23,6 +24,10 @@ const routes = [
       {
         path: "/signup", 
         element: <Signup />,
+      },
+      {
+        path: "/verify", 
+        element: <VerifyPage/>,
       },
       {
         path: "/admin-dashboard", 

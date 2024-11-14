@@ -1,112 +1,136 @@
-/* General styling for the signup page */
+/* Container for the entire signup form */
 .signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f4f4f9;
-  }
-  
-  .signup-form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 500px;
-    max-width: 400px;
-  }
-  
-  .signup-form h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-family: 'Arial', sans-serif;
-    color: #333;
-  }
-  
-  .signup-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #555;
-  }
-  
-  .signup-form input {
-    width: 380px;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .signup-form input:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .signup-form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .signup-form button:hover {
-    background-color: #0056b3;
-  }
-  
-  .signup-form .error {
-    color: #ff0000;
-    font-size: 14px;
-    margin-bottom: 15px;
-  }
-  
-  .signup-form .success {
-    color: #28a745;
-    font-size: 14px;
-    margin-bottom: 15px;
-  }
-  
-  .signup-form .role-selector {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-  }
-  
-  .signup-form .role-selector label {
-    font-weight: normal;
-  }
-  
-  .signup-form .role-selector input[type="radio"] {
-    margin-left: 5px;
-  }
-  
-  .signup-form .terms {
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-  
-  .signup-form .terms input {
-    margin-right: 5px;
-  }
-  
-  .signup-form .footer {
-    font-size: 14px;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .signup-form .footer a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .signup-form .footer a:hover {
-    text-decoration: underline;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+/* Form styles */
+.signup-form {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 400px;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Form title */
+.signup-form h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Form field containers */
+.signup-form div {
+  margin-bottom: 15px;
+}
+
+/* Labels */
+.signup-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Input fields */
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"],
+.signup-form select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/* Select dropdown */
+.signup-form select {
+  appearance: none;
+  padding: 10px;
+}
+
+/* Checkbox */
+.signup-form input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Wrapper for each checkbox and label to align items consistently */
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between checkbox and label */
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Ensure checkboxes align on the left consistently */
+.checkbox-wrapper input[type="checkbox"] {
+  margin: 0;
+  width: auto;
+  height: auto;
+}
+
+
+/* Button styling */
+.signup-form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.signup-form button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+/* Terms and conditions */
+.terms {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Error message styling */
+.signup-form p {
+  color: red;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Footer for the login link */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}

@@ -6,7 +6,7 @@ import './login.css'
 
 
 function Login(){
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();   //useDispatch() hook is used to dispatch actions to the Redux store
     const navigate = useNavigate();
@@ -21,29 +21,33 @@ function Login(){
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ email, password }),
         })
         .then((res) => {
             if (res.ok) {
                 return res.json(); // Parse JSON if response is OK
             } else {
-                throw new Error('Invalid username or password');
+                throw new Error('Invalid email or password');
             }
         })
         .then((data) => {
             console.log(data);
-            dispatch(loginSuccess({ user: data.user, isAdmin: data.isAdmin }));
 
+            if (!data.user.is_verified) {
+                throw new Error('Please verify your email before logging in.');
+            }
+        
+            dispatch(loginSuccess({ user: data.user, isAdmin: data.isAdmin }));
+        
             // Navigate based on user role
             navigate(data.isAdmin ? '/admin-dashboard' : '/student-dashboard');
-        })
+
+        })   
         .catch((error) => {
             console.error(error);
             dispatch(loginFailure('An error occurred during login'));
         });
 
-        
-     
     }
 
 
@@ -59,8 +63,8 @@ function Login(){
                         <label>Email address:</label>
                         <input
                             type="text"
-                            value={username}
-                            onChange={(event) => setUsername(event.target.value)}
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
                             required
                         />                   
                     </div>
