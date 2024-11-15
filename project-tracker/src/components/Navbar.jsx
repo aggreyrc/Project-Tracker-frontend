@@ -25,7 +25,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <BookMarked className="h-8 w-8" />
-              <span className="font-bold text-xl">Project Bank</span>
+              <span className="ml-4 text-white hover:text-indigo-100 px-3 py-2 rounded-md text-sm font-medium">Moringa Sch.</span>
             </Link>
             <Link
               to="/"
@@ -71,9 +71,9 @@ export default function Navbar() {
                 {/* Logout Button */}
                 <button
                   onClick={handleLogout}
-                  className="flex items-center space-x-1 text-white hover:text-indigo-100 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-indigo-500 hover:text-indigo-700"
                 >
-                  <LogOut className="h-5 w-5" />
+                  <LogOut className="text-indigo-500 hover:text-indigo-700" />
                   <span>Logout</span>
                 </button>
               </>
@@ -100,3 +100,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+

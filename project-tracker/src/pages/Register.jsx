@@ -33,7 +33,7 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/register", {
+      const response = await fetch("https://phase-5-project-55r2.onrender.com/register", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ export default function Register() {
   // Handle verification code submission
   const handleVerifyCode = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/verify", {
+      const response = await fetch("https://phase-5-project-55r2.onrender.com/verify", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
