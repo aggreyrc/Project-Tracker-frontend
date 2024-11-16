@@ -6,6 +6,7 @@ import Home from "./pages/Home"
 import AdminDashboard from "./pages/adminDashboard.jsx";
 import StudentDashboard from "./pages/studentDashboard.jsx";
 import VerifyPage from "./pages/VerifyPage.jsx";
+import ProtectedRoute from "./Components/ProtectedRoute.jsx";
 
 const routes = [
   {
@@ -31,19 +32,22 @@ const routes = [
       },
       {
         path: "/admin-dashboard", 
-        element: <AdminDashboard />,
-        // pass the user to  admin dashboard
-        loader: ({request}) => {
-          return {user: request.context.user}
-        }
+        element:(
+          <ProtectedRoute isAdminRequired>
+                        <AdminDashboard />
+          </ProtectedRoute>
+        )
+        
 
       },
       {
         path: "/student-dashboard", 
-        element: <StudentDashboard />,
-        loader: ({request}) => {
-          return {user: request.context.user}
-        }
+        element: (
+          <ProtectedRoute>
+                        <StudentDashboard />
+          </ProtectedRoute>
+        )
+        
       },
     ],
   },

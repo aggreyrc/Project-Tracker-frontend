@@ -50,22 +50,37 @@ function VerifyPage() {
     }
 
     return (
-        <div className="verify-container">
-            <h3>Email Verification</h3>
-            <p>Enter the verification code sent to your email:</p>
-            <form onSubmit={handleVerificationSubmit}>
-                <input
-                    type="text"
-                    value={verificationCode}
-                    onChange={(e) => setVerificationCode(e.target.value)}
-                    required
-                />
-                <button type="submit">Confirm Verification</button>
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+           <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+           <h3 className="text-center text-2xl font-semibold mb-4">Email Verification</h3>
+           <p className="text-center text-gray-600 mb-6">Enter the verification code sent to your email:</p>
+
+           <form onSubmit={handleVerificationSubmit} className="space-y-4">
+              <input
+                  type="text"
+                  value={verificationCode}
+                  onChange={(e) => setVerificationCode(e.target.value)}
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+
+              <button
+                type="submit"
+                className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                Confirm Verification
+              </button>
             </form>
 
-            {verificationError && <p className="error">{verificationError}</p>}
-            {successMessage && <p className="success">{successMessage}</p>}
-        </div>
+        {verificationError && (
+            <p className="text-red-500 text-center mt-4">{verificationError}</p>
+        )}
+        {successMessage && (
+            <p className="text-green-500 text-center mt-4">{successMessage}</p>
+        )}
+    </div>
+</div>
+
     );
 }
 

@@ -5,6 +5,7 @@ const store = configureStore({
   reducer: {
     auth: authReducer,  // Adding your auth reducer to the store
   },
+  devTools: process.env.NODE_ENV !== 'production',  // Enable in development mode
 });
 
 export default store

@@ -33,14 +33,12 @@ function Login(){
         .then((data) => {
             console.log(data);
 
-            if (!data.user.is_verified) {
-                throw new Error('Please verify your email before logging in.');
-            }
-        
-            dispatch(loginSuccess({ user: data.user, isAdmin: data.isAdmin }));
+            const isAdmin = data.user && data.user.role === "admin";
+
+            dispatch(loginSuccess({ user: data.user, isAdmin }));
         
             // Navigate based on user role
-            navigate(data.isAdmin ? '/admin-dashboard' : '/student-dashboard');
+            navigate(isAdmin ? '/admin-dashboard' : '/student-dashboard');
 
         })   
         .catch((error) => {
@@ -52,19 +50,20 @@ function Login(){
 
 
     return(
-        <>
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
 
-            <div className="login-container">
+            <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
 
-                <h1>Login in to your account</h1>
+                <h1 className="text-3xl font-semibold text-center mb-6" >Login in to your account</h1>
 
-                <form onSubmit={handleSubmit} className="login-form">
+                <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                         <label>Email address:</label>
                         <input
                             type="text"
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
+                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required
                         />                   
                     </div>
@@ -75,19 +74,24 @@ function Login(){
                             type="password"
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
+                            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required
                         />
                     </div>
 
-                    <button type="submit">Sign in</button>
+                    <button 
+                        type="submit"
+                        className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                        Sign in</button>
 
                     <p>
-                        Don't have an account? <Link to= "/signup"> Sign up here</Link>
+                        Don't have an account? <Link to= "/signup" className="text-blue-500 hover:text-blue-600"> Sign up here</Link>
                     </p>
 
                 </form> 
             </div>
-        </>
+        </div>
     )
 }
 export default Login
