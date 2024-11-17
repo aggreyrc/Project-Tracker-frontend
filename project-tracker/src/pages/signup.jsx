@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser, setError, setLoading } from "../Components/authSlice";
 import './signup.css';
 import { Link, useNavigate } from "react-router-dom";
+import validator from "validator"
+
 
 
 function Signup() {
@@ -18,8 +20,9 @@ function Signup() {
     const [isAdmin, setIsAdmin] = useState(false);
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
-    
 
+
+    
     // Open modal after successful signup
     function handleSignUpSubmit(event) {
         event.preventDefault();
@@ -32,6 +35,18 @@ function Signup() {
         if(password !== confirmPassword){
             dispatch(setError("Password do not match"))
             return;
+        }
+
+        if(!validator.isStrongPassword(password, {
+            minLength: 8, 
+            minNumbers: 1, 
+            minSymbols: 1, 
+            minUppercase:0,
+            minLowercase:0
+        })){
+            dispatch(setError("Password must be at least 8 characters long and include a number, an uppercase letter, and a special character."));
+            return false;
+
         }
 
         const formData = {
@@ -93,6 +108,7 @@ function Signup() {
                
                     <form onSubmit={handleSignUpSubmit} className="space-y-6">
                         
+                        {/* Username Input */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700"  >Username:</label>
                             <input
@@ -105,6 +121,7 @@ function Signup() {
                             />
                         </div>
 
+                        {/* Email input */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700"  >Email:</label>
                             <input
@@ -117,6 +134,7 @@ function Signup() {
                             />
                         </div>
 
+                        {/* Password input */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700" >Password:</label>
                             <input
@@ -129,6 +147,7 @@ function Signup() {
                             />
                         </div>
 
+                       {/* Confirm password input */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700" >Confirm Password:</label>
                             <input
@@ -141,6 +160,8 @@ function Signup() {
                             />
                         </div>
 
+
+                        {/* Role Selection */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700" >Role:</label>
                             <select
@@ -156,6 +177,7 @@ function Signup() {
                             </select>
                         </div>
 
+                        {/* Term Input */}
                         <div className="terms">
                             <label className="block text-sm font-medium text-gray-700" htmlFor="admin">Admin:</label>
                             <input
@@ -178,6 +200,7 @@ function Signup() {
                             />
                         </div>
 
+                        {/* Button input */}
                         <button 
                             type="submit"
                             disabled={loading} 
@@ -187,8 +210,8 @@ function Signup() {
                             {loading ? "Signing up..." : "Sign Up"}
                         </button>
 
-                        {error && <p>{error}</p>}
-                        {successMessage && <p className="success-message">{successMessage}</p>}
+                        {error && <p className="text-red-500" >{error}</p>}
+                        {successMessage && <p className="text-green-600">{successMessage}</p>}
 
                         <div className="footer">
                             Already have an account? <Link to="/login" className="text-blue-500 hover:text-blue-600" >Login</Link>
