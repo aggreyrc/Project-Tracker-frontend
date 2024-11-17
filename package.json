@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "lucide-react": "^0.456.0",
+    "react-router-dom": "^6.28.0",
+    "react-table": "^7.8.0",
+    "reselect": "^5.1.1"
+  }
+}
