@@ -16,6 +16,7 @@ function NavBar() {
   })
       .then((res) => {
           if (res.ok) {
+              localStorage.removeItem('user')  //Remove user from local storage
               dispatch(logout()); // Clear Redux state
               navigate('/login'); // Redirect to login page
           } else {

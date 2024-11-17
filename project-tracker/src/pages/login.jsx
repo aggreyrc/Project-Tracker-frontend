@@ -35,6 +35,9 @@ function Login(){
 
             const isAdmin = data.user && data.user.role === "admin";
 
+             // Store user data in localStorage
+            localStorage.setItem('user', JSON.stringify(data.user));
+
             dispatch(loginSuccess({ user: data.user, isAdmin }));
         
             // Navigate based on user role
