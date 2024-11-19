@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Users, Code, Globe, Database } from 'lucide-react';
 
 export default function ProjectCard({ project }) {
+  
+  const[comments,setComments] = useState([])
+  const[newComment,setNewComment] =useState('')
+  const[showComments, setShowComments] =useState("")
+
+  function toggleComments(){
+    setShowComments(!showComments)
+  }
+
+  function handleAddComment(){
+     
+      if (newComment.trim()){
+          setComments([...comments, newComment]);
+          setNewComment("")
+      }
+  }
+
+
+
   const getProjectTypeIcon = (type) => {
     switch (type) {
       case 'Web Development':
@@ -45,6 +64,55 @@ export default function ProjectCard({ project }) {
           {project.project_members && project.project_members.length !== 1 ? 's' : ''}
         </span>
       </div>
+
+     {/* COMMENTS*/}
+
+     {/* Toggle Button */}
+      <button 
+           onClick={toggleComments}
+            className="bg-indigo-600 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600 transition"
+         >
+             {showComments? "Hide Comments" : "View Comments"}
+      </button>
+
+      {/* Comments Section */}
+
+      {showComments && (
+
+        <div>
+          <h3 className="text-xl font-bold mb-2 text-black" >Comments:</h3>
+
+          <ul className="space-y-2">
+             {comments.map((comment, index) => (
+                <li 
+                    key={index} 
+                    className="py-2 text-gray-800 border-b border-gray-300 hover:bg-gray-100 transition-colors cursor-pointer"
+            
+                  >
+                  {comment}
+                </li>
+             ))}
+          </ul>
+
+          <div className="mt-4 flex items-center space-x-2">
+              <input
+                  type='text'
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  placeholder='Add a comment...'
+                  className="flex-1 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            
+              />
+
+              <button 
+                  onClick={handleAddComment} 
+                  className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-600 transition"
+                >
+                  Add
+                </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
