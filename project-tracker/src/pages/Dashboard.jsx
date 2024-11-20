@@ -94,13 +94,14 @@ export default function Dashboard() {
             Welcome back, {user?.username}! You are logged in as {user?.is_admin ? 'Admin' : 'Student'}.
           </p>
         </div>
-                 <Link
+        {(user?.is_admin || user?.role === 'student') && (
+          <Link
             to="/projects/new"
             className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
           >
             Add Project
           </Link>
-      
+        )}
       </div>
 
       <div className="flex justify-start space-x-4 mb-6">
