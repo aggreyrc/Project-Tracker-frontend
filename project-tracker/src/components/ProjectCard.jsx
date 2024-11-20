@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Users, Code, Globe, Database } from 'lucide-react';
 
 export default function ProjectCard({ project }) {
@@ -6,6 +6,20 @@ export default function ProjectCard({ project }) {
   const[comments,setComments] = useState([])
   const[newComment,setNewComment] =useState('')
   const[showComments, setShowComments] =useState("")
+
+  // key for storing project-specific comments in localStorage
+  const storageKey = `comments_${project.id}`
+
+  // load comments from the local storage
+  useEffect(() => {
+    const savedComments = JSON.parse(localStorage.getItem(storageKey));
+    setComments(savedComments)
+  }, [storageKey])
+
+  // save comments to local storage whenever they change
+  useEffect(() => {
+    localStorage.setItem(storageKey, JSON.stringify(comments))
+  }, [comments, storageKey])
 
   function toggleComments(){
     setShowComments(!showComments)
@@ -18,8 +32,6 @@ export default function ProjectCard({ project }) {
           setNewComment("")
       }
   }
-
-
 
   const getProjectTypeIcon = (type) => {
     switch (type) {
@@ -76,7 +88,6 @@ export default function ProjectCard({ project }) {
       </button>
 
       {/* Comments Section */}
-
       {showComments && (
 
         <div>
