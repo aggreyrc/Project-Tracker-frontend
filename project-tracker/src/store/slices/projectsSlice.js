@@ -1,3 +1,5 @@
+
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -7,7 +9,10 @@ const initialState = {
   error: null,
   currentPage: 1,
   pageSize: 10,
-  cohortFilter: null, // Cohort filter
+  filters: {
+    cohort: null,    // Filter by cohort
+    search: '',      // Filter by search query (name/description)
+  },
 };
 
 // Thunk to fetch all projects from the backend
@@ -52,10 +57,27 @@ const projectsSlice = createSlice({
   name: 'projects',
   initialState,
   reducers: {
-    setCohortFilter: (state, action) => {
-      state.cohortFilter = action.payload;
+    setFilter: (state, action) => {
+      const { type, value } = action.payload;
+      state.filters[type] = value;
       state.displayedProjects = state.projects
-        .filter(project => !state.cohortFilter || project.cohort_id === state.cohortFilter)
+        .filter((project) => {
+          // Filter by cohort if set
+          if (state.filters.cohort && project.cohort_id !== state.filters.cohort) {
+            return false;
+          }
+          // Filter by search query if set
+          if (
+            state.filters.search &&
+            !(
+              project.name.toLowerCase().includes(state.filters.search.toLowerCase()) ||
+              project.description.toLowerCase().includes(state.filters.search.toLowerCase())
+            )
+          ) {
+            return false;
+          }
+          return true;
+        })
         .slice(0, state.pageSize);
       state.currentPage = 1;
     },
@@ -63,7 +85,21 @@ const projectsSlice = createSlice({
       const startIndex = state.currentPage * state.pageSize;
       const endIndex = startIndex + state.pageSize;
       const nextProjects = state.projects
-        .filter(project => !state.cohortFilter || project.cohort_id === state.cohortFilter)
+        .filter((project) => {
+          if (state.filters.cohort && project.cohort_id !== state.filters.cohort) {
+            return false;
+          }
+          if (
+            state.filters.search &&
+            !(
+              project.name.toLowerCase().includes(state.filters.search.toLowerCase()) ||
+              project.description.toLowerCase().includes(state.filters.search.toLowerCase())
+            )
+          ) {
+            return false;
+          }
+          return true;
+        })
         .slice(startIndex, endIndex);
       state.displayedProjects = [...state.displayedProjects, ...nextProjects];
       state.currentPage += 1;
@@ -101,10 +137,7 @@ const projectsSlice = createSlice({
 });
 
 // Export the actions
-export const { setCohortFilter, loadMoreProjects } = projectsSlice.actions;
+export const { setFilter, loadMoreProjects } = projectsSlice.actions;
 
 export default projectsSlice.reducer;
-
-
-
 
