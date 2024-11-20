@@ -3,35 +3,35 @@ import { Users, Code, Globe, Database } from 'lucide-react';
 
 export default function ProjectCard({ project }) {
   
-  const[comments,setComments] = useState([])
-  const[newComment,setNewComment] =useState('')
-  const[showComments, setShowComments] =useState("")
+  // const[comments,setComments] = useState([])
+  // const[newComment,setNewComment] =useState('')
+  // const[showComments, setShowComments] =useState("")
 
-  // key for storing project-specific comments in localStorage
-  const storageKey = `comments_${project.id}`
+  // // key for storing project-specific comments in localStorage
+  // const storageKey = `comments_${project.id}`
 
-  // load comments from the local storage
-  useEffect(() => {
-    const savedComments = JSON.parse(localStorage.getItem(storageKey));
-    setComments(savedComments)
-  }, [storageKey])
+  // // load comments from the local storage
+  // useEffect(() => {
+  //   const savedComments = JSON.parse(localStorage.getItem(storageKey));
+  //   setComments(savedComments)
+  // }, [storageKey])
 
-  // save comments to local storage whenever they change
-  useEffect(() => {
-    localStorage.setItem(storageKey, JSON.stringify(comments))
-  }, [comments, storageKey])
+  // // save comments to local storage whenever they change
+  // useEffect(() => {
+  //   localStorage.setItem(storageKey, JSON.stringify(comments))
+  // }, [comments, storageKey])
 
-  function toggleComments(){
-    setShowComments(!showComments)
-  }
+  // function toggleComments(){
+  //   setShowComments(!showComments)
+  // }
 
-  function handleAddComment(){
+  // function handleAddComment(){
      
-      if (newComment.trim()){
-          setComments([...comments, newComment]);
-          setNewComment("")
-      }
-  }
+  //     if (newComment.trim()){
+  //         setComments([...comments, newComment]);
+  //         setNewComment("")
+  //     }
+  // }
 
   const getProjectTypeIcon = (type) => {
     switch (type) {
@@ -80,15 +80,15 @@ export default function ProjectCard({ project }) {
      {/* COMMENTS*/}
 
      {/* Toggle Button */}
-      <button 
+      {/* <button 
            onClick={toggleComments}
             className="bg-indigo-600 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600 transition"
          >
              {showComments? "Hide Comments" : "View Comments"}
-      </button>
+      </button> */}
 
       {/* Comments Section */}
-      {showComments && (
+      {/* {showComments && (
 
         <div>
           <h3 className="text-xl font-bold mb-2 text-black" >Comments:</h3>
@@ -123,7 +123,7 @@ export default function ProjectCard({ project }) {
                 </button>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
