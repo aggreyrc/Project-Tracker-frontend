@@ -51,7 +51,7 @@ export default function DataTable() {
     if (type === 'Project') await dispatch(deleteProject(id));
     else if (type === 'Cohort') await dispatch(deleteCohort(id));
     else if (type === 'ProjectMember') await dispatch(deleteProjectMember(id));
-    
+
     refreshData();
   };
 
@@ -61,7 +61,7 @@ export default function DataTable() {
       else if (entityType === 'Cohort') await dispatch(editCohort({ id: currentEntity.id, updatedData: data }));
       else if (entityType === 'ProjectMember') await dispatch(editProjectMember({ id: currentEntity.id, updatedData: data }));
     }
-    
+
     closeForm();
     refreshData();
   };
@@ -76,14 +76,17 @@ export default function DataTable() {
       { Header: 'Number of Students', accessor: 'number_of_students' },
       {
         Header: 'Actions',
-        Cell: ({ row }) => (
+        Cell: ({ row }) =>
           user?.is_admin && (
             <div className="space-x-2">
-              <button onClick={() => openForm('Cohort', row.original)} className="text-indigo-500 hover:text-indigo-700">Edit</button>
-              <button onClick={() => handleDelete(row.original.id, 'Cohort')} className="text-red-500 hover:text-red-700">Delete</button>
+              <button onClick={() => openForm('Cohort', row.original)} className="text-indigo-500 hover:text-indigo-700">
+                Edit
+              </button>
+              <button onClick={() => handleDelete(row.original.id, 'Cohort')} className="text-red-500 hover:text-red-700">
+                Delete
+              </button>
             </div>
-          )
-        ),
+          ),
       },
     ],
     projects: [
@@ -96,14 +99,17 @@ export default function DataTable() {
       { Header: 'Image URL', accessor: 'image_url' },
       {
         Header: 'Actions',
-        Cell: ({ row }) => (
+        Cell: ({ row }) =>
           user?.is_admin && (
             <div className="space-x-2">
-              <button onClick={() => openForm('Project', row.original)} className="text-indigo-500 hover:text-indigo-700">Edit</button>
-              <button onClick={() => handleDelete(row.original.id, 'Project')} className="text-red-500 hover:text-red-700">Delete</button>
+              <button onClick={() => openForm('Project', row.original)} className="text-indigo-500 hover:text-indigo-700">
+                Edit
+              </button>
+              <button onClick={() => handleDelete(row.original.id, 'Project')} className="text-red-500 hover:text-red-700">
+                Delete
+              </button>
             </div>
-          )
-        ),
+          ),
       },
     ],
     projectMembers: [
@@ -115,14 +121,20 @@ export default function DataTable() {
       { Header: 'Joined At', accessor: 'joined_at' },
       {
         Header: 'Actions',
-        Cell: ({ row }) => (
+        Cell: ({ row }) =>
           user?.is_admin && (
             <div className="space-x-2">
-              <button onClick={() => openForm('ProjectMember', row.original)} className="text-indigo-500 hover:text-indigo-700">Edit</button>
-              <button onClick={() => handleDelete(row.original.id, 'ProjectMember')} className="text-red-500 hover:text-red-700">Delete</button>
+              <button onClick={() => openForm('ProjectMember', row.original)} className="text-indigo-500 hover:text-indigo-700">
+                Edit
+              </button>
+              <button
+                onClick={() => handleDelete(row.original.id, 'ProjectMember')}
+                className="text-red-500 hover:text-red-700"
+              >
+                Delete
+              </button>
             </div>
-          )
-        ),
+          ),
       },
     ],
   };
@@ -155,11 +167,17 @@ export default function DataTable() {
   );
 
   return (
-    <div className="p-4">
+    <div className="p-4 bg-gray-50 min-h-screen font-roboto">
       <div className="flex justify-center mb-4 space-x-4">
-        <button onClick={() => handleTabChange(0)} className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">Cohorts</button>
-        <button onClick={() => handleTabChange(1)} className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">Projects</button>
-        <button onClick={() => handleTabChange(2)} className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">Project Members</button>
+        <button onClick={() => handleTabChange(0)} className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700">
+          Cohorts
+        </button>
+        <button onClick={() => handleTabChange(1)} className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700">
+          Projects
+        </button>
+        <button onClick={() => handleTabChange(2)} className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700">
+          Project Members
+        </button>
       </div>
 
       {isEditing && (
@@ -178,12 +196,12 @@ export default function DataTable() {
           <table {...getTableProps()} className="min-w-full bg-white border border-gray-300 rounded shadow-md">
             <thead>
               {headerGroups.map((headerGroup) => (
-                <tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()} className="bg-indigo-500 text-white">
+                <tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()} className="bg-blue-600 text-white">
                   {headerGroup.headers.map((column) => (
                     <th
                       key={column.id}
                       {...column.getHeaderProps(column.getSortByToggleProps())}
-                      className="px-4 py-2 text-left font-semibold border border-indigo-600 cursor-pointer hover:bg-indigo-600"
+                      className="px-4 py-2 text-left font-semibold border border-blue-600 cursor-pointer hover:bg-blue-700"
                     >
                       {column.render('Header')}
                       <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
@@ -196,7 +214,7 @@ export default function DataTable() {
               {page.map((row) => {
                 prepareRow(row);
                 return (
-                  <tr key={row.id} {...row.getRowProps()} className="hover:bg-gray-100">
+                  <tr key={row.id} {...row.getRowProps()} className="bg-black text-white hover:bg-gray-700">
                     {row.cells.map((cell) => (
                       <td key={cell.column.id} {...cell.getCellProps()} className="px-4 py-2 border-t border-gray-300">
                         {cell.render('Cell')}
@@ -209,14 +227,25 @@ export default function DataTable() {
           </table>
 
           <div className="flex justify-between items-center mt-4">
-            <button onClick={() => previousPage()} disabled={!canPreviousPage} className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 disabled:opacity-50">Previous</button>
+            <button
+              onClick={() => previousPage()}
+              disabled={!canPreviousPage}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+            >
+              Previous
+            </button>
             <span>Page {pageIndex + 1}</span>
-            <button onClick={() => nextPage()} disabled={!canNextPage} className="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 disabled:opacity-50">Next</button>
+            <button
+              onClick={() => nextPage()}
+              disabled={!canNextPage}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+            >
+              Next
+            </button>
           </div>
         </div>
       )}
     </div>
   );
 }
-
 

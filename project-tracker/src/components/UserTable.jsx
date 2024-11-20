@@ -1,4 +1,3 @@
-// src/components/UserTable.jsx
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers, addUser, updateUser, deleteUser } from '../store/slices/userSlice';
@@ -118,7 +117,10 @@ const UserTable = () => {
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()} className="bg-gray-200">
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())} className="p-3 border border-gray-300 text-gray-700 font-semibold">
+                <th
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  className="p-3 border border-gray-300 text-gray-700 font-semibold"
+                >
                   {column.render('Header')}
                   <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
                 </th>
@@ -130,9 +132,15 @@ const UserTable = () => {
           {page.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} className="even:bg-gray-50">
+              <tr
+                {...row.getRowProps()}
+                className="bg-black text-white hover:bg-gray-800"
+              >
                 {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()} className="p-3 border border-gray-300 text-gray-600">
+                  <td
+                    {...cell.getCellProps()}
+                    className="p-3 border border-gray-600"
+                  >
                     {cell.render('Cell')}
                   </td>
                 ))}
@@ -220,4 +228,6 @@ const UserTable = () => {
 };
 
 export default UserTable;
+
+
 
