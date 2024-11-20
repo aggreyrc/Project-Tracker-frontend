@@ -66,7 +66,7 @@ export default function NewProject() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
-                className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+                className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 text-black"
               />
             </div>
             <div>
@@ -79,7 +79,7 @@ export default function NewProject() {
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 required
-                className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+                className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 text-black"
               />
             </div>
             <div>
@@ -92,7 +92,7 @@ export default function NewProject() {
                 value={formData.github_url}
                 onChange={(e) => setFormData({ ...formData, github_url: e.target.value })}
                 required
-                className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+                className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 text-black"
               />
             </div>
             <div>
@@ -105,7 +105,7 @@ export default function NewProject() {
                 value={formData.type}
                 onChange={(e) => setFormData({ ...formData, type: e.target.value })}
                 required
-                className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+                className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 text-black"
               />
             </div>
             <div>
@@ -134,7 +134,7 @@ export default function NewProject() {
                   id="student_name"
                   value={memberData.student_name}
                   onChange={(e) => setMemberData({ ...memberData, student_name: e.target.value })}
-                  className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+                  className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 text-black"
                 />
               </div>
               <div>
@@ -146,7 +146,7 @@ export default function NewProject() {
                   id="role"
                   value={memberData.role}
                   onChange={(e) => setMemberData({ ...memberData, role: e.target.value })}
-                  className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+                  className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 text-black"
                 />
               </div>
               <div>
@@ -158,7 +158,7 @@ export default function NewProject() {
                   id="cohort_id"
                   value={memberData.cohort_id}
                   onChange={(e) => setMemberData({ ...memberData, cohort_id: e.target.value })}
-                  className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+                  className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 text-black"
                 />
               </div>
               <div>
@@ -170,7 +170,7 @@ export default function NewProject() {
                   id="joined_at"
                   value={memberData.joined_at}
                   onChange={(e) => setMemberData({ ...memberData, joined_at: e.target.value })}
-                  className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+                  className="mt-1 block w-full border border-gray-300 bg-gray-50 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 text-black"
                 />
               </div>
             </div>
